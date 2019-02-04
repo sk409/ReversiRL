@@ -393,50 +393,47 @@ def main():
 
     board = Board()
 
-    #########################################################################################
+    ########################################################################################
     #========================================================================================
-    # filters_0 = 128
-    # filters_1 = 512
-    # filters_2 = 1024
-    # filters_3 = 2048
-    # num_actions = Board.area()
-    # input_shape = (Board.size(), Board.size(), Board.channel())
-    # inputs = Input(input_shape)
-    # x = ZeroPadding2D((2, 2))(inputs)
-    # x = Convolution2D(filters_0, (3, 3), kernel_initializer="he_normal")(x)
-    # x = BatchNormalization()(x)
-    # x = ReLU()(x)
-    # x = MaxPool2D(strides=(1, 1))(x)
-    # x = residual_block(x, filters_1, first_layer=True)
-    # x = residual_block(x, filters_1)
-    # x = residual_block(x, filters_1)
-    # x = residual_block(x, filters_2, pool=True)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_2)
-    # x = residual_block(x, filters_3, pool=True)
-    # x = residual_block(x, filters_3)
-    # x = residual_block(x, filters_3)
-    # x = BatchNormalization()(x)
-    # x = ReLU()(x)
-    # x = GlobalAveragePooling2D()(x)
-    # outputs = Dense(num_actions)(x)
+    filters_0 = 128
+    filters_1 = 512
+    filters_2 = 1024
+    filters_3 = 2048
+    num_actions = Board.area()
+    input_shape = (Board.size(), Board.size(), Board.channel())
+    inputs = Input(input_shape)
+    x = ZeroPadding2D((2, 2))(inputs)
+    x = Convolution2D(filters_0, (3, 3), kernel_initializer="he_normal")(x)
+    x = BatchNormalization()(x)
+    x = ReLU()(x)
+    x = MaxPool2D(strides=(1, 1))(x)
+    x = residual_block(x, filters_1, first_layer=True)
+    x = residual_block(x, filters_1)
+    x = residual_block(x, filters_1)
+    x = residual_block(x, filters_2, pool=True)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_2)
+    x = residual_block(x, filters_3, pool=True)
+    x = residual_block(x, filters_3)
+    x = residual_block(x, filters_3)
+    x = BatchNormalization()(x)
+    x = ReLU()(x)
+    x = GlobalAveragePooling2D()(x)
+    outputs = Dense(num_actions)(x)
 
-    # model = Model(inputs=inputs, outputs=outputs)
-    # model.compile(optimizer=Adam(), loss=mse)
+    model = Model(inputs=inputs, outputs=outputs)
+    model.compile(optimizer=Adam(), loss=mse)
     #========================================================================================
-    #########################################################################################
-
-    
-    model = load_model(MODEL_PATH)
+    ########################################################################################
 
     replay_buffer_capacity = 2**20
     replay_buffer = ReplayBuffer(replay_buffer_capacity)
